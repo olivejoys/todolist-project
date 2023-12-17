@@ -53,5 +53,6 @@ public class TodoController {
     List<Todo> delete(@PathVariable Long id) { //i didn't create the id yet that's why it's getting an error
         return todoService.delete(id);
 
+
     }
 }
