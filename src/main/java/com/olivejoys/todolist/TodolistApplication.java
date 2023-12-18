@@ -9,10 +9,10 @@ public class TodolistApplication {
 
 	//to solve the @autowire problem I created the Bean to return new method here
 
-	@Bean
-	public TodoService todoService() {
-		return new TodoService();
-	}
+//	@Bean
+//	public TodoService todoService() {
+//		return TodoService.TodoService();
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodolistApplication.class, args);
