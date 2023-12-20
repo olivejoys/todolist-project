@@ -1,32 +1,46 @@
 package com.olivejoys.todolist.entity;
 
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.Objects;
+@Entity
+@Table(name = "task")
 public class Task {
+    @Id //addded notation
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
+    @JsonFormat(pattern="yyyy-MM-dd")
+
+    private LocalDate startDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate dueDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate endDate;
     private boolean status;
     private int priority;
 
     public Task() {
     }
 
-    public Task(Long id, String name, String description,
-                boolean status, int priority) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.status = status;
-        this.priority = priority;
-    }
+//    public Task(String name, String description,
+//                LocalDate startDate, LocalDate dueDate, LocalDate endDate,
+//                boolean status, int priority) {
+//        this.name = name;
+//        this.description = description;
+//        this.startDate = startDate;
+//        this.dueDate = dueDate;
+//        this.endDate = endDate;
+//        this.status = status;
+//        this.priority = priority;
+//    }
+
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -43,6 +57,30 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public boolean isStatus() {
@@ -63,24 +101,35 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" + "id=" + id + ", name='" + name + '\'' + "," +
-                " description='" + description + '\'' + ", status=" + status +
-                ", priority=" + priority + '}';
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", startDate=" + startDate +
+                ", dueDate=" + dueDate +
+                ", endDate=" + endDate +
+                ", status=" + status +
+                ", priority=" + priority +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Task task)) return false;
-        return isStatus() == task.isStatus() && getPriority()
-                == task.getPriority() && getId().equals(task.getId())
-                && getName().equals(task.getName())
-                && getDescription().equals(task.getDescription());
+        return isStatus() == task.isStatus() && getPriority() ==
+                task.getPriority() && Objects.equals(getId(), task.getId())
+                && Objects.equals(getName(), task.getName()) &&
+                Objects.equals(getDescription(), task.getDescription())
+                && Objects.equals(getStartDate(), task.getStartDate()) &&
+                Objects.equals(getDueDate(), task.getDueDate()) &&
+                Objects.equals(getEndDate(), task.getEndDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(),
-                getDescription(), isStatus(), getPriority());
+        return Objects.hash(getId(), getName(), getDescription(),
+                getStartDate(), getDueDate(), getEndDate(), isStatus(),
+                getPriority());
     }
 }
