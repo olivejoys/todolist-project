@@ -22,12 +22,6 @@ public class TodoController {
 
     }
 
-//    @GetMapping("/ping")
-//    public String ping() {
-//        return "pong";
-//    }
-    //create the todo list and is using the post method
-    //also is requesting body
     @PostMapping
     List<Task> create(@RequestBody Task todo) {
         return todoService.create(todo);
