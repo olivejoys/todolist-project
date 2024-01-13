@@ -19,8 +19,6 @@ public class TodoService {
     /*public static TodoService TodoService() {
         this.todoRepository = todoRepository;
     } */
-
-
     public List<Task> create(Task todo) {
         todoRepository.save(todo);
         return list(); //this will make this method also list

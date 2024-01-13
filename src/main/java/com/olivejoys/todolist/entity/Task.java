@@ -26,17 +26,17 @@ public class Task {
     public Task() {
     }
 
-//    public Task(String name, String description,
-//                LocalDate startDate, LocalDate dueDate, LocalDate endDate,
-//                boolean status, int priority) {
-//        this.name = name;
-//        this.description = description;
-//        this.startDate = startDate;
-//        this.dueDate = dueDate;
-//        this.endDate = endDate;
-//        this.status = status;
-//        this.priority = priority;
-//    }
+    public Task(String name, String description,
+                LocalDate startDate, LocalDate dueDate, LocalDate endDate,
+                boolean status, int priority) {
+        this.name = name;
+        this.description = description;
+        this.startDate = startDate;
+        this.dueDate = dueDate;
+        this.endDate = endDate;
+        this.status = status;
+        this.priority = priority;
+    }
 
 
     public Long getId() {

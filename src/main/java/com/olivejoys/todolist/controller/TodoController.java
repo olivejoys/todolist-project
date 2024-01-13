@@ -44,9 +44,11 @@ public class TodoController {
 
 
     @DeleteMapping("{id}") //the id is the parameter
-    // the value that will be re
-    List<Task> delete(@PathVariable Long id) { // id was created in TodoService already
+    // the value that will be deleted
+    List<Task> delete(@PathVariable Long id) { // id was created
+        // in TodoService already
         return todoService.delete(id);
+
 
 
     }
